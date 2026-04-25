@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vanshika Singh Dutt – SEBI Registered Research Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #faf7f2;
+  --warm: #f5efe4;
+  --gold: #c9a84c;
+  --gold-light: #e8c96a;
+  --green: #2d6a4f;
+  --green-light: #40916c;
+  --text: #1a1a1a;
+  --muted: #6b6b6b;
+  --border: rgba(201,168,76,0.25);
+  --card: #ffffff;
+  --tg-blue: #229ED9;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px 32px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Subtle warm texture overlay */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(45,106,79,0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Thin gold top bar */
+.top-bar {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  position: relative; z-index: 2;
+  animation: fadeDown .5s ease both;
+}
+
+.top-bar-sebi {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: .05em;
+}
+.top-bar-sebi span { color: var(--green); font-weight: 700; }
+
+.top-bar-bse {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  background: rgba(201,168,76,0.12);
+  border: 1px solid var(--border);
+  padding: 4px 10px;
+  border-radius: 20px;
+  letter-spacing: .04em;
+}
+.top-bar-bse span { color: var(--gold); font-weight: 700; }
+
+/* MAIN CARD */
+.card {
+  position: relative; z-index: 2;
+  background: var(--card);
+  border-radius: 28px;
+  max-width: 480px;
+  width: 100%;
+  overflow: hidden;
+  box-shadow:
+    0 2px 4px rgba(0,0,0,0.04),
+    0 12px 40px rgba(0,0,0,0.08),
+    0 0 0 1px rgba(201,168,76,0.15);
+  animation: fadeUp .6s ease both;
+}
+
+/* Gold accent top stripe */
+.card-stripe {
+  height: 4px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+  width: 100%;
+}
+
+.card-inner { padding: 32px 28px 0; }
+
+/* HERO: photo + name */
+.hero-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.photo-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.photo-circle {
+  width: 86px; height: 86px;
+  border-radius: 50%;
+  border: 3px solid var(--gold);
+  background: linear-gradient(135deg, #e8e0d0, #d4c9b0);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 42px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(201,168,76,0.25);
+}
+
+.photo-circle img {
+  width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
+}
+
+/* Verified tick */
+.verified {
+  position: absolute;
+  bottom: 2px; right: 2px;
+  width: 22px; height: 22px;
+  background: var(--green);
+  border-radius: 50%;
+  border: 2px solid #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px;
+}
+
+.hero-text {}
+
+.hero-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--green);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.hero-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.15;
+  margin-bottom: 5px;
+}
+
+.hero-reg {
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 500;
+  letter-spacing: .03em;
+}
+
+/* DIVIDER */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  margin: 0 0 22px;
+}
+
+/* TAGLINE */
+.tagline {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.4;
+  text-align: center;
+  margin-bottom: 6px;
+}
+.tagline span { color: var(--green); }
+
+.tagline-sub {
+  font-size: 13.5px;
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 22px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* FEATURES — clean pill rows */
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 24px;
+}
+
+.feat {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 14px;
+  background: var(--warm);
+  border-radius: 12px;
+  border: 1px solid rgba(201,168,76,0.12);
+  transition: border-color .2s, background .2s;
+}
+
+.feat:hover {
+  border-color: rgba(201,168,76,0.35);
+  background: rgba(201,168,76,0.06);
+}
+
+.feat-icon {
+  width: 34px; height: 34px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, var(--green), var(--green-light));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.feat-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -.01em;
+}
+
+/* SOCIAL PROOF strip */
+.proof-strip {
+  display: flex;
+  justify-content: space-around;
+  background: linear-gradient(135deg, #1a3d2e, #2d6a4f);
+  border-radius: 14px;
+  padding: 14px 10px;
+  margin-top: 16px;
+  margin-bottom: 22px;
+}
+
+.proof-item { text-align: center; }
+.proof-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--gold-light);
+  line-height: 1;
+}
+.proof-lbl {
+  font-size: 10px;
+  color: rgba(255,255,255,0.65);
+  font-weight: 500;
+  margin-top: 3px;
+  letter-spacing: .03em;
+}
+
+/* FREE TRIAL LABEL */
+.trial-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 13px;
+}
+.trial-line { flex:1; height:1px; background: var(--border); }
+.trial-text {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: .07em;
+  white-space: nowrap;
+}
+
+/* MAIN CTA */
+.cta-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  background: linear-gradient(135deg, #1a8fd1, var(--tg-blue));
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  padding: 17px;
+  border-radius: 14px;
+  text-decoration: none;
+  width: 100%;
+  letter-spacing: .02em;
+  box-shadow: 0 8px 28px rgba(34,158,217,0.32);
+  transition: transform .18s, box-shadow .18s;
+  margin-bottom: 12px;
+}
+
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(34,158,217,0.45);
+}
+
+.cta-btn svg { flex-shrink: 0; }
+
+/* No spam note */
+.no-spam {
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.no-spam::before { content:'🔒'; font-size:12px; }
+
+/* DISCLAIMER */
+.disclaimer-box {
+  background: #f9f6f1;
+  border-top: 1px solid rgba(201,168,76,0.15);
+  padding: 16px 28px 20px;
+}
+
+.disclaimer-box p {
+  font-size: 10.5px;
+  color: #999;
+  line-height: 1.7;
+  text-align: center;
+}
+.disclaimer-box p + p { margin-top: 6px; }
+.disclaimer-box strong { color: #777; font-weight: 600; }
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(18px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+@keyframes fadeDown {
+  from { opacity:0; transform:translateY(-10px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+</style>
+</head>
+<body>
+
+<!-- Top meta bar -->
+<div class="top-bar">
+  <div class="top-bar-sebi">SEBI Reg. <span>INH000022251</span></div>
+  <div class="top-bar-bse">BSE Enlistment No. <span>5763</span></div>
+</div>
+
+<div class="card">
+  <div class="card-stripe"></div>
+  <div class="card-inner">
+
+    <!-- HERO -->
+    <div class="hero-row">
+      <div class="photo-wrap">
+        <!-- Replace emoji with: <img src="your-photo.jpg"> -->
+        <div class="photo-circle">👩‍💼</div>
+        <div class="verified">✓</div>
+      </div>
+      <div class="hero-text">
+        <div class="hero-label">SEBI Registered Analyst</div>
+        <div class="hero-name">Vanshika<br>Singh Dutt</div>
+        <div class="hero-reg">Reg. No. INH000022251 · BSE 5763</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- TAGLINE -->
+    <div class="tagline">
+      Research-backed market insights,<br><span>delivered daily.</span>
+    </div>
+    <div class="tagline-sub">
+      Join a growing community of informed investors getting SEBI-registered analysis — free for 30 days.
+    </div>
+
+    <!-- FEATURES -->
+    <div class="features">
+      <div class="feat">
+        <div class="feat-icon">📊</div>
+        <div class="feat-text">Daily Index & Stock Options Calls</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">💰</div>
+        <div class="feat-text">Equity Cash & Commodity Analysis</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🎯</div>
+        <div class="feat-text">Precise Entry & Exit Levels</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🛡️</div>
+        <div class="feat-text">Risk Management on Every Call</div>
+      </div>
+    </div>
+
+    <!-- TRIAL LABEL -->
+    <div class="trial-row">
+      <div class="trial-line"></div>
+      <div class="trial-text">✦ JOIN FREE FOR 30 DAYS ✦</div>
+      <div class="trial-line"></div>
+    </div>
+
+    <!-- CTA -->
+    <a href="https://t.me/+w5q9VlKR9RM1Y2M1" target="_blank" class="cta-btn">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
+        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.04 9.613c-.148.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.903.608z"/>
+      </svg>
+      Join Telegram — It's Free
+    </a>
+
+    <div class="no-spam">No spam. No hidden charges. Cancel anytime.</div>
+
+    <!-- SOCIAL PROOF -->
+    <div class="proof-strip">
+      <div class="proof-item">
+        <div class="proof-num">5K+</div>
+        <div class="proof-lbl">Members</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">4+</div>
+        <div class="proof-lbl">Yrs Experience</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">SEBI</div>
+        <div class="proof-lbl">Registered RA</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">Free</div>
+        <div class="proof-lbl">30-Day Trial</div>
+      </div>
+    </div>
+
+  </div><!-- /card-inner -->
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer-box">
+    <p><strong>Important Disclaimer:</strong> Registration granted by SEBI, Enlistment as RA with Exchange and certification from NISM in no way guarantee performance of the intermediary or provide any assurance of returns to investors.</p>
+    <p>Investments in securities markets are subject to market risks. Research provided is for informational purposes only. Past performance is not indicative of future results. Please read all related documents carefully before investing.</p>
+  </div>
+
+</div><!-- /card -->
+
+</body>
+</html>
